@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import exp from "constants";
 
 test("API GET Request", async ({ request }) => {
   const response = await request.get("https://dog.ceo/api/breeds/image/random");

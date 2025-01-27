@@ -7,8 +7,6 @@ test("API GET Request", async ({ request }) => {
   const response = await request.get("https://gorest.co.in/public/v2/users");
 
   expect(response.status()).toBe(200);
-
-  console.log(await response.json());
 });
 
 test("API POST Request", async ({ request }) => {
@@ -26,8 +24,6 @@ test("API POST Request", async ({ request }) => {
   });
 
   expect(response.status()).toBe(201);
-
-  console.log(await response.json());
 });
 
 test("API PUT Request", async ({ request }) => {
@@ -48,13 +44,11 @@ test("API PUT Request", async ({ request }) => {
   );
 
   expect(response.status()).toBe(200);
-
-  console.log(await response.json());
 });
 
 test("API DELETE Request", async ({ request }) => {
   const response = await request.delete(
-    "https://gorest.co.in/public/v2/users/7631477",
+    "https://gorest.co.in/public/v2/users/7631468",
     {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
@@ -64,6 +58,4 @@ test("API DELETE Request", async ({ request }) => {
   );
 
   expect(response.status()).toBe(204);
-
-  console.log("User deleted successfully.");
 });
