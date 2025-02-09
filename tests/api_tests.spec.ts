@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 
+const updateURL = "https://reqres.in/api/users/2";
+
 test("API GET Request", async ({ request }) => {
   const response = await request.get("https://dog.ceo/api/breeds/image/random");
 
   expect(response.status()).toBe(200);
-
-  console.log(await response.json());
 });
 
 test("API POST Request", async ({ request }) => {
@@ -20,12 +20,10 @@ test("API POST Request", async ({ request }) => {
 
   const text = await response.text();
   expect(text).toContain("dog");
-
-  console.log(await response.json());
 });
 
 test("API PUT Request", async ({ request }) => {
-  const response = await request.put("https://reqres.in/api/users/2", {
+  const response = await request.put(updateURL, {
     data: {
       name: "dog",
       job: "be happy",
@@ -36,12 +34,10 @@ test("API PUT Request", async ({ request }) => {
 
   const text = await response.text();
   expect(text).toContain("dog");
-
-  console.log(await response.json());
 });
 
 test("API DELETE Request", async ({ request }) => {
-  const response = await request.delete("https://reqres.in/api/users/2");
+  const response = await request.delete(updateURL);
 
   expect(response.status()).toBe(204);
 });
